@@ -65,7 +65,7 @@ public class CustomerDao extends Dao {
                         Customer.COL_ADULT
                 ).FROM(Customer.TABLE_NAME))
                 .run()
-                .mapToList(CustomerMapper.MAPPER);
+                .mapToList(CustomerMapper.MAPPER); /** CustomerMapper.MAPPER is auto create this class from {@link Customer}*/
     }
 
     /**
@@ -83,7 +83,8 @@ public class CustomerDao extends Dao {
      * @return
      */
     public Observable<Long> insert(int id, String firstname, String lastname, boolean adult) {
-        ContentValues values = CustomerMapper.contentValues()
+        // todo the .firstname is the column name of CustomerDaoClass
+        ContentValues values = CustomerMapper.contentValues() /** contentValues is auto create from {@link Customer}*/
                 .id(id)
                 .firstname(firstname)
                 .lastname(lastname)
